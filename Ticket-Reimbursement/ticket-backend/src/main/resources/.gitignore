@@ -1,0 +1,33 @@
+# Ignore Maven and Gradle build directories
+/target/
+/build/
+
+# Ignore IntelliJ IDEA files
+/.idea/
+/*.iml
+
+# Ignore Eclipse files
+/.settings/
+/.classpath
+/.project
+
+# Ignore logs
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive configuration
+src/main/resources/application.properties
+src/main/resources/application.yml
+
+# Ignore test reports
+/test-output/
+/test-results/
+
+# Ignore other generated files
+*.class
+*.jar
+*.war
+*.ear

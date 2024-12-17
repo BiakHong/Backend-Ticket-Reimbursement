@@ -1,0 +1,10 @@
+com\revature\ticket_backend\Controller\TicketController.class
+com\revature\ticket_backend\Repository\TicketRepository.class
+com\revature\ticket_backend\Controller\UserController.class
+com\revature\ticket_backend\model\Ticket.class
+com\revature\ticket_backend\CorsConfig.class
+com\revature\ticket_backend\Service\UserService.class
+com\revature\ticket_backend\Repository\UserRepository.class
+com\revature\ticket_backend\Service\TicketService.class
+com\revature\ticket_backend\TicketReimbursementApplication.class
+com\revature\ticket_backend\model\User.class
