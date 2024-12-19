@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,44 +27,41 @@ public class UserController {
 
 
     
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        //check if username or email is taken
-        if(userService.usernameExists(user.getUsername())){
-            return ResponseEntity.badRequest().body("Username is already taken.");
-        }
-        if(userService.emailExists(user.getEmail())){
-            return ResponseEntity.badRequest().body("Email is already taken");
-        }
+    // @PostMapping("/register")
+    // public ResponseEntity<?> registerUser(@RequestBody User user) {
+    //     //check if username or email is taken
+    //     if(userService.usernameExists(user.getUsername())){
+    //         return ResponseEntity.badRequest().body("Username is already taken.");
+    //     }
+    //     if(userService.emailExists(user.getEmail())){
+    //         return ResponseEntity.badRequest().body("Email is already taken");
+    //     }
         
-        User newUser = userService.createUser(user);
-        return ResponseEntity.ok(newUser);
+    //     User newUser = userService.createUser(user);
+    //     return ResponseEntity.ok(newUser);
+    // }
+
+    @PostMapping("/register")
+public ResponseEntity<?> registerUser(@RequestBody User user) {
+    // Check if username or email is already taken
+    if (userService.usernameExists(user.getUsername())) {
+        return ResponseEntity.badRequest().body("Username is already taken.");
+    }
+    if (userService.emailExists(user.getEmail())) {
+        return ResponseEntity.badRequest().body("Email is already taken.");
     }
 
-//     @PostMapping("/login")
-// public ResponseEntity<?> loginUser(@RequestBody User user) {
-//     Optional<User> existingUser = userService.findByUsername(user.getUsername());
-//     if (existingUser.isPresent()) {
-//         if (existingUser.get().getPassword().equals(user.getPassword())) {
-//             // Mock token for testing purposes
-//             String token = "mock-jwt-token";
-//             return ResponseEntity.ok(Map.of(
-//                 "success", true,
-//                 "token", token,
-//                 "message", "Login successful!"
-//             ));
-//         } else {
-//             return ResponseEntity.status(401).body(Map.of(
-//                 "success", false,
-//                 "message", "Invalid password."
-//             ));
-//         }
-//     }
-//     return ResponseEntity.status(401).body(Map.of(
-//         "success", false,
-//         "message", "User not found."
-//     ));
-// }
+    // Log for debugging
+    System.out.println("Creating user: " + user.getUsername());
+
+    // Create and return the new user
+    User newUser = userService.createUser(user);
+    System.out.println("User created successfully with ID: " + newUser.getUserId());
+    
+    return ResponseEntity.ok("Successfully Created");
+}
+
+
 @PostMapping("/login")
 public ResponseEntity<?> loginUser(@RequestBody User user) {
     Optional<User> existingUser = userService.findByUsername(user.getUsername());
