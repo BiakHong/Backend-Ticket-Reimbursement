@@ -3,6 +3,8 @@
 ## Overview
 The Ticket Reimbursement System is a web application designed to streamline the reimbursement process within a company. Employees can submit reimbursement requests, and managers can review and approve or deny them efficiently. The application is built using modern technologies and follows best practices for software development.
 
+ ### Refer to this link for the front-end : https://github.com/BiakHong/Frontend-Ticket_Reimbursement
+
 ## Features
 
 ### Core Features
